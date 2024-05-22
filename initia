@@ -1,0 +1,28 @@
+Nginx with SSL and Reverse Proxy Setup for Initia
+This guide provides step-by-step instructions to set up an Nginx server with SSL using Certbot, configure a reverse proxy, and manage configurations for your Initia project.
+
+Prerequisites
+A server running Ubuntu or a similar Linux distribution.
+A domain name pointing to your server's IP address.
+Access to the terminal with sudo privileges.
+Steps
+Step 1: Install Nginx and Certbot
+First, you need to install Nginx and Certbot. Open your terminal and update the package lists. Then, install Nginx, Certbot, and the Certbot Nginx plugin. These tools will help you set up the Nginx server and obtain SSL certificates.
+
+Step 2: Obtain SSL Certificates
+Next, you will use Certbot to obtain SSL certificates for your domain. This involves running Certbot with the Nginx plugin, specifying your domain and email address. Certbot will automatically configure Nginx to use the obtained certificates.
+
+Step 3: (Optional) Clean Nginx Configuration
+If you want to start with a clean slate, you can delete all existing configurations in the Nginx sites-available and sites-enabled directories. This step is optional and should be done only if you are sure you want to remove all existing configurations.
+
+Step 4: Create Nginx Configuration for Initia
+You will need to create a new Nginx configuration file for your Initia project. This file will define how Nginx handles requests for your domain, including setting up a reverse proxy to forward requests to your application running on a specific port. It will also include configurations for handling HTTPS requests using the SSL certificates obtained earlier.
+
+Step 5: Enable the New Configuration
+After creating the new configuration file, you need to enable it by creating a symbolic link from the sites-available directory to the sites-enabled directory. This tells Nginx to use this configuration.
+
+Step 6: Remove Default Configuration
+To avoid conflicts with the default Nginx configuration, you should remove the default configuration file from the sites-enabled directory. This ensures that only your new configuration is active.
+
+Step 7: Test and Reload Nginx
+Finally, test the Nginx configuration for any syntax errors. If the test is successful, reload the Nginx service to apply the new configuration. This step is crucial to ensure that your Nginx server is set up correctly and can handle requests as expected.
